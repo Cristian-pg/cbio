@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 install_requires=[
    'pandas',
@@ -9,7 +9,7 @@ install_requires=[
 ]
 
 setup(name='cbio',
-      version='0.1.2',
+      version='0.1.3',
       description='Package with bioinformatical utilities',
       url='https://github.com/Cristian-pg/cbio',
       author='Cristian Perez',
