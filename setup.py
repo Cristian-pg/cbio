@@ -10,6 +10,7 @@ setup(name='cbio',
       license='GNU General Public License v3.0',
       packages=find_packages(),
       zip_safe=False,
+      python_requires='>=3',
       classifiers=[
         'Development Status :: 3 - Alpha',
         'Programming Language :: Python :: 3',
