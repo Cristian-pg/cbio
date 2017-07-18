@@ -1,15 +1,8 @@
 from setuptools import setup, find_packages
 
-install_requires=[
-   'pandas',
-   'matplotlib',
-   'seaborn',
-   'biomart',
-   'pymysql'
-]
 
 setup(name='cbio',
-      version='0.1.3',
+      version='0.1.4',
       description='Package with bioinformatical utilities',
       url='https://github.com/Cristian-pg/cbio',
       author='Cristian Perez',
@@ -21,4 +14,11 @@ setup(name='cbio',
         'Development Status :: 3 - Alpha',
         'Programming Language :: Python :: 3',
       ],
+      install_requires=[
+         'pandas',
+         'matplotlib',
+         'seaborn',
+         'biomart',
+         'pymysql'
+      ]
       )
