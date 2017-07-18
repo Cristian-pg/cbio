@@ -1,8 +1,13 @@
 from setuptools import setup, find_packages
+import ast
 
+with open('cbio/__init__.py', 'rb') as f:
+    version = str(ast.literal_eval(_version_re.search(
+        f.read().decode('utf-8')).group(1)))
+    )))
 
 setup(name='cbio',
-      version='0.1.4',
+      version=version,
       description='Package with bioinformatical utilities',
       url='https://github.com/Cristian-pg/cbio',
       author='Cristian Perez',
