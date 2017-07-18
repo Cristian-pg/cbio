@@ -15,5 +15,10 @@ setup(name='cbio',
       author='Cristian Perez',
       author_email='Vilero89@gmail.com',
       license='GNU General Public License v3.0',
-      packages=['cbio'],
-      zip_safe=False)
+      packages=find_packages(),
+      zip_safe=False,
+      classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Programming Language :: Python :: 3',
+      ],
+      )
