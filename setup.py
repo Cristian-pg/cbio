@@ -9,7 +9,7 @@ install_requires=[
 ]
 
 setup(name='cbio',
-      version='0.1.1',
+      version='0.1.2',
       description='Package with bioinformatical utilities',
       url='https://github.com/Cristian-pg/cbio',
       author='Cristian Perez',
