@@ -90,7 +90,7 @@ def get_config():
 
 def get_version_of_software(ngs_software_bin):
 
-    output = cbio.utils.utils.run_cmd('ls -l ' + ngs_software_bin, 1)
+    output = cbio.utils.run_cmd('ls -l ' + ngs_software_bin, 1)
     software_versions = {}
 
     for line in output:
