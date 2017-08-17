@@ -204,3 +204,28 @@ def setMode(args):
         mode = 'Production'
 
     return mode
+
+
+def set_log(name, dirs):
+
+    log = logging.getLogger(name)
+    log.setLevel(logging.DEBUG)
+
+    for d in dirs:
+
+        # create a file handler
+        handler = logging.FileHandler(d)
+        handler.setLevel(logging.DEBUG)
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+
+        log.addHandler(handler)
+
+    # Create stream handler
+    ch = logging.StreamHandler(sys.stdout)
+    ch.setLevel(logging.INFO)
+    ch.setFormatter(formatter)
+
+    log.addHandler(ch)
+
+    return log

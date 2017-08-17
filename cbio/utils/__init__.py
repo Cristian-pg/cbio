@@ -1,1 +1,1 @@
-import cbio.utils.utils
+from cbio.utils.utils import *
