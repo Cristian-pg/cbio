@@ -75,6 +75,7 @@ def create_folders(dir_list):
     # Check if input file_list is indeed a list of strings
     if not isinstance(dir_list, list):
         raise TypeError("Argument given to check format must be a list of string")
+    
 
     # Check if list if empty. In that case, raise exception
     check_empty(dir_list)
