@@ -53,7 +53,6 @@ def get_config():
 
     config['software'] = {}
     config['software']['paths'] = {
-        "TRIMMOMATICPATH": os.path.join(ngs_software_bin, "trimmomatic.jar"),
         "BWAPATH": os.path.join(ngs_software_bin, 'bwa'),
         "SAMTOOLSPATH": os.path.join(ngs_software_bin, 'samtools'),
         "FREEBAYESPATH": os.path.join(ngs_software_bin, 'freebayes'),
@@ -66,13 +65,11 @@ def get_config():
         "TABIXPATH": os.path.join(ngs_software_bin, 'tabix'),
         "BGZIPPATH": os.path.join(ngs_software_bin, 'bgzip'),
         "ABRA": os.path.join(ngs_software_bin, 'abra-0.97.jar'),
-        "CUTADAPT": os.path.join(ngs_software_bin, 'cutadapt'),
     }
     config['software']['data'] = {
         "PLASMID_REF": os.path.join(plasmid_ref, 'plasm_seq.fa'),
         "PLASMID_IDX": os.path.join(plasmid_ref, 'indexes.tsv'),
         "PLASMID_BED": os.path.join(plasmid_ref, 'regions.bed'),
-        "TRIMMOMATIC_NEXTERA": os.path.join(ngs_software_bin, 'NexteraPE-PE.fa'),
     }
 
     config['dbs'] = {
