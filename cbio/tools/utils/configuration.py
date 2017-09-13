@@ -65,6 +65,8 @@ def get_config():
         "SNPSIFTPATH": os.path.join(ngs_software_bin, 'SnpSift.jar'),
         "TABIXPATH": os.path.join(ngs_software_bin, 'tabix'),
         "BGZIPPATH": os.path.join(ngs_software_bin, 'bgzip'),
+        "ABRA": os.path.join(ngs_software_bin, 'abra-0.97.jar'),
+        "CUTADAPT": os.path.join(ngs_software_bin, 'cutadapt'),
     }
     config['software']['data'] = {
         "PLASMID_REF": os.path.join(plasmid_ref, 'plasm_seq.fa'),
@@ -132,61 +134,5 @@ def check_config_paths(config):
         path = config['software']['data'][data]
         if isinstance(path, str) and not os.path.exists(path):
             print("Data " + data + " does not exists -> " + path)
-            print("Exiting...")
-            exit(1)
-
-
-def get_configuration():
-    """
-    Docstring
-    """
-    ngs_software_bin = os.getenv("BIN_BIOTOOLS")
-    refgenomes = os.getenv("REFGENOMES")
-
-    configuration = {}
-
-    configuration['ref'] = {
-        # Ref Genomes
-        "GRCh38": os.path.join(refgenomes, 'hs38', 'hs38.fa'),
-        "GRCh37": os.path.join(refgenomes, 'hs37d5', 'hs37d5.fa')
-        }
-
-    configuration['software'] = {}
-    configuration['software']['paths'] = {
-        # "TRIMMOMATICPATH": os.path.join(ngs_software_bin, "trimmomatic.jar"),
-        "BWAPATH": os.path.join(ngs_software_bin, 'bwa'),
-        "SAMTOOLSPATH": os.path.join(ngs_software_bin, 'samtools'),
-        "FREEBAYESPATH": os.path.join(ngs_software_bin, 'freebayes'),
-        # "FASTQCPATH": os.path.join(ngs_software_bin, 'fastqc'),
-        "PICARDPATH": os.path.join(ngs_software_bin, 'picard.jar'),
-        "ANNOVARPATH": os.path.join(ngs_software_bin, 'table_annovar.pl'),
-        "BEDTOOLSPATH": os.path.join(ngs_software_bin, 'bedtools'),
-        # "SNPEFFPATH": os.path.join(ngs_software_bin, 'snpEff.jar'),
-        # "SNPSIFTPATH": os.path.join(ngs_software_bin, 'SnpSift.jar'),
-        "TABIXPATH": os.path.join(ngs_software_bin, 'tabix'),
-        "BGZIPPATH": os.path.join(ngs_software_bin, 'bgzip'),
-    }
-
-    # Check if sofware in configuration and references exist
-    check_configuration_paths(configuration)
-
-    return configuration
-
-
-def check_configuration_paths(configuration):
-    """
-    Docstring
-    """
-    for software in configuration['software']['paths']:
-        path = configuration['software']['paths'][software]
-        if isinstance(path, str) and not os.path.lexists(path):
-            print("Software " + software + " does not exists -> " + path)
-            print("Exiting...")
-            exit(1)
-
-    for reference in configuration['ref']:
-        path = configuration['ref'][reference]
-        if isinstance(path, str) and not os.path.exists(path):
-            print("Reference " + reference + " does not exists -> " + path)
             print("Exiting...")
             exit(1)

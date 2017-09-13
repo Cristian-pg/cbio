@@ -2,6 +2,8 @@ import os
 import subprocess
 import sys
 import logging
+import coloredlogs
+
 
 
 def check_input(starting_files):
@@ -75,7 +77,6 @@ def create_folders(dir_list):
     # Check if input file_list is indeed a list of strings
     if not isinstance(dir_list, list):
         raise TypeError("Argument given to check format must be a list of string")
-    
 
     # Check if list if empty. In that case, raise exception
     check_empty(dir_list)
@@ -223,10 +224,11 @@ def set_log(name, dirs):
         log.addHandler(handler)
 
     # Create stream handler
-    ch = logging.StreamHandler(sys.stdout)
-    ch.setLevel(logging.INFO)
-    ch.setFormatter(formatter)
-
-    log.addHandler(ch)
+    coloredlogs.install(level='INFO', logger=log)
+    # ch = logging.StreamHandler(sys.stdout)
+    # ch.setLevel(logging.INFO)
+    # ch.setFormatter(formatter)
+    #
+    # log.addHandler(ch)
 
     return log
