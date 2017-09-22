@@ -133,3 +133,49 @@ def check_config_paths(config):
             print("Data " + data + " does not exists -> " + path)
             print("Exiting...")
             exit(1)
+
+
+def get_test_config():
+    """
+    Docstring
+    """
+
+    config = {}
+
+    config['ref'] = {
+        # Ref Genomes
+        "GRCh38": 'hs38.fa',
+        "GRCh37": 'hs37d5.fa'
+        }
+
+    config['software'] = {}
+    config['software']['paths'] = {
+        "BWAPATH": 'bwa',
+        "SAMTOOLSPATH": 'samtools',
+        "FREEBAYESPATH": 'freebayes',
+        "FASTQCPATH": 'fastqc',
+        "PICARDPATH": 'picard.jar',
+        "ANNOVARPATH": 'table_annovar.pl',
+        "BEDTOOLSPATH": 'bedtools',
+        "SNPEFFPATH": 'snpEff.jar',
+        "SNPSIFTPATH": 'SnpSift.jar',
+        "TABIXPATH": 'tabix',
+        "BGZIPPATH": 'bgzip',
+        "ABRA": 'abra-0.97.jar',
+    }
+    config['software']['data'] = {
+        "PLASMID_REF": 'plasm_seq.fa',
+        "PLASMID_IDX": 'indexes.tsv',
+        "PLASMID_BED": 'regions.bed',
+    }
+
+    config['dbs'] = {
+        "ANNOVARINFO": 'annov_humandb',
+        "IMEGENDB": 'test.db'
+    }
+
+    # config['outdir'] = output_dir
+
+    # Check if sofware in config and references exist
+
+    return config
