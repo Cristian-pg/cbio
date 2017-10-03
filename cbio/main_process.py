@@ -87,7 +87,7 @@ class BioTask():
         else:
             raise Exception("Version \"" + self.build + "\" still not available")
 
-    def cmd_run(self):
+    def cmd_run(self, mode=1):
         cmd = self.build_cmd()
 
         # If dry_run, don't run the process, just print it
@@ -96,21 +96,25 @@ class BioTask():
             self.log.info(cmd)
 
         else:
-            self.log.info('Running command...')
-            process = subprocess.Popen(cmd, shell=True, executable='/bin/bash',
-                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if mode == 1:
+                self.log.info('Running command...')
+                process = subprocess.Popen(cmd, shell=True, executable='/bin/bash',
+                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-            out = None
-            err = None
+                out = None
+                err = None
 
-            self.log.debug("Printing software log:")
-            while out != "" or err != "":
-                out = process.stdout.readline()
-                err = process.stderr.readline()
-                out = out.decode("utf-8").strip('\n')
-                err = err.decode("utf-8").strip('\n')
-                self.log.debug(err)
-                self.log.debug(out)
+                self.log.debug("Printing software log:")
+                while out != "" or err != "":
+                    out = process.stdout.readline()
+                    err = process.stderr.readline()
+                    out = out.decode("utf-8").strip('\n')
+                    err = err.decode("utf-8").strip('\n')
+                    self.log.debug(err)
+                    self.log.debug(out)
+
+            elif mode == 2:
+                os.system(cmd)
 
         self.log.info("Finished process")
 
