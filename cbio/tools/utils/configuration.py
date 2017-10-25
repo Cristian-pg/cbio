@@ -65,6 +65,8 @@ def get_config():
         "TABIXPATH": os.path.join(ngs_software_bin, 'tabix'),
         "BGZIPPATH": os.path.join(ngs_software_bin, 'bgzip'),
         "ABRA": os.path.join(ngs_software_bin, 'abra-0.97.jar'),
+        "BBDUKPATH": os.path.join(ngs_software_bin, 'bbduk.sh'),
+        "KARTPATH": os.path.join(ngs_software_bin, 'kart')
     }
     config['software']['data'] = {
         "PLASMID_REF": os.path.join(plasmid_ref, 'plasm_seq.fa'),
