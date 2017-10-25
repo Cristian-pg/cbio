@@ -27,6 +27,8 @@ class BioTask():
         self.BGZIPPATH = self.config['softdata']['software']['paths']['BGZIPPATH']
         self.TABIXPATH = self.config['softdata']['software']['paths']['TABIXPATH']
         self.ABRA = self.config['softdata']['software']['paths']['ABRA']
+        self.BBDUKPATH = self.config['softdata']['software']['paths']['BBDUKPATH']
+        self.KARTPATH = self.config['softdata']['software']['paths']['KARTPATH']
 
         # Other
         self.REFERENCE_GENOME = self.config['softdata']['ref'][self.build]
@@ -50,7 +52,7 @@ class BioTask():
 
         try:
             assert list(self.config.keys()) == ['DEBUG', 'TESTING', 'DRY_RUN', 'sampleID',
-                                                'outfolder', 'log_files',
+                                                'outfolder', 'url', 'log_files',
                                                 'process_conf', 'tools_conf', 'softdata']
             assert list(self.tool_config.keys()) == ['input', 'output', 'software', 'tool_conf']
             return True
@@ -59,7 +61,7 @@ class BioTask():
             self.log.error("Assert error while checking configuration")
             self.log.error(self.config.keys())
             self.log.error(str(['DEBUG', 'TESTING', 'DRY_RUN', 'sampleID',
-                                                'outfolder', 'log_files',
+                                                'outfolder', 'url', 'log_files',
                                                 'process_conf', 'tools_conf', 'softdata']))
             self.log.error(self.tool_config.keys())
             self.log.error(str(['input', 'output', 'software', 'tool_conf']))
