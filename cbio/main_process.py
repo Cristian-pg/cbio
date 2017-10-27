@@ -49,6 +49,21 @@ class BioTask():
         self.check_config()
         self.check_reference_genome()
 
+    def run(self):
+        import time
+        start = time.time()
+        self.loggerApi.iniciar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'])
+
+        # Ejecutar la herramienta
+        self.run_process()
+
+        # Finalizacion
+        end = time.time()
+        time = str(round(end - start, 2))
+        self.log.debug(f'_time_ - {type(self).__name__} - {time} s')
+        self.loggerApi.finalizar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'])
+        # self.loggerApi.informar(f"{type(self).__name__} result")
+
     def check_config(self):
 
         try:
