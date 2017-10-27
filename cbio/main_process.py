@@ -29,6 +29,7 @@ class BioTask():
         self.ABRA = self.config['softdata']['software']['paths']['ABRA']
         self.BBDUKPATH = self.config['softdata']['software']['paths']['BBDUKPATH']
         self.KARTPATH = self.config['softdata']['software']['paths']['KARTPATH']
+        self.RTGPATH = self.config['softdata']['software']['paths']['RTGPATH']
 
         # Other
         self.REFERENCE_GENOME = self.config['softdata']['ref'][self.build]
