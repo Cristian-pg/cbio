@@ -67,7 +67,8 @@ def get_config():
         "ABRA": os.path.join(ngs_software_bin, 'abra-0.97.jar'),
         "BBDUKPATH": os.path.join(ngs_software_bin, 'bbduk.sh'),
         "KARTPATH": os.path.join(ngs_software_bin, 'kart'),
-        "RTGPATH": os.path.join(ngs_software_bin, 'RTG.jar')
+        "RTGPATH": os.path.join(ngs_software_bin, 'RTG.jar'),
+        "VCFALLELICPRIM": os.path.join(ngs_software_bin, 'vcfallelicprimitives')
     }
     config['software']['data'] = {
         "PLASMID_REF": os.path.join(plasmid_ref, 'plasm_seq.fa'),

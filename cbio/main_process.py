@@ -23,6 +23,7 @@ class BioTask():
         self.BEDTOOLSPATH = self.config['softdata']['software']['paths']['BEDTOOLSPATH']
         self.PICARDPATH = self.config['softdata']['software']['paths']['PICARDPATH']
         self.SNPEFFPATH = self.config['softdata']['software']['paths']['SNPEFFPATH']
+        self.SNPSIFTPATH = self.config['softdata']['software']['paths']['SNPSIFTPATH']
         self.FASTQCPATH = self.config['softdata']['software']['paths']['FASTQCPATH']
         self.BGZIPPATH = self.config['softdata']['software']['paths']['BGZIPPATH']
         self.TABIXPATH = self.config['softdata']['software']['paths']['TABIXPATH']
@@ -30,6 +31,7 @@ class BioTask():
         self.BBDUKPATH = self.config['softdata']['software']['paths']['BBDUKPATH']
         self.KARTPATH = self.config['softdata']['software']['paths']['KARTPATH']
         self.RTGPATH = self.config['softdata']['software']['paths']['RTGPATH']
+        self.VCFALLELICPRIM = self.config['softdata']['software']['paths']['VCFALLELICPRIM']
 
         # Other
         self.REFERENCE_GENOME = self.config['softdata']['ref'][self.build]
@@ -106,6 +108,7 @@ class BioTask():
             raise Exception("Version \"" + self.build + "\" still not available")
 
     def cmd_run(self, mode=1):
+        import time
         cmd = self.build_cmd()
 
         # If dry_run, don't run the process, just print it
@@ -134,7 +137,20 @@ class BioTask():
             elif mode == 2:
                 os.system(cmd)
 
-        self.log.info("Finished process")
+            elif mode == 3:
+                f = open("/home/cpg/full.bwa.log", "w+")
+                # Using pipe in command could block the stdout, see this post:
+                # https://thraxil.org/users/anders/posts/2008/03/13/Subprocess-Hanging-PIPE-is-your-enemy/
+                # https://www.reddit.com/r/Python/comments/1vbie0/subprocesspipe_will_hang_indefinitely_if_stdout/
+                self.log.info('Running command...')
+                process = subprocess.Popen(cmd, shell=True, executable='/bin/bash',
+                                 stdout=f, stderr=f)
+                while process.poll() is None:
+                    time.sleep(5)
+
+                f.close()
+
+        self.log.info(f"Finished process {type(self).__name__}")
 
     def get_task_options(self):
         return(self.tool_config)
