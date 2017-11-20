@@ -68,7 +68,8 @@ def get_config():
         "BBDUKPATH": os.path.join(ngs_software_bin, 'bbduk.sh'),
         "KARTPATH": os.path.join(ngs_software_bin, 'kart'),
         "RTGPATH": os.path.join(ngs_software_bin, 'RTG.jar'),
-        "VCFALLELICPRIM": os.path.join(ngs_software_bin, 'vcfallelicprimitives')
+        "VCFALLELICPRIM": os.path.join(ngs_software_bin, 'vcfallelicprimitives'),
+        "VT": os.path.join(ngs_software_bin, 'vt')
     }
     config['software']['data'] = {
         "PLASMID_REF": os.path.join(plasmid_ref, 'plasm_seq.fa'),

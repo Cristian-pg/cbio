@@ -32,6 +32,7 @@ class BioTask():
         self.KARTPATH = self.config['softdata']['software']['paths']['KARTPATH']
         self.RTGPATH = self.config['softdata']['software']['paths']['RTGPATH']
         self.VCFALLELICPRIM = self.config['softdata']['software']['paths']['VCFALLELICPRIM']
+        self.VT = self.config['softdata']['software']['paths']['VT']
 
         # Other
         self.REFERENCE_GENOME = self.config['softdata']['ref'][self.build]
