@@ -69,7 +69,8 @@ def get_config():
         "KARTPATH": os.path.join(ngs_software_bin, 'kart'),
         "RTGPATH": os.path.join(ngs_software_bin, 'RTG.jar'),
         "VCFALLELICPRIM": os.path.join(ngs_software_bin, 'vcfallelicprimitives'),
-        "VT": os.path.join(ngs_software_bin, 'vt')
+        "VT": os.path.join(ngs_software_bin, 'vt'),
+        "SORTBED": os.path.join(ngs_software_bin, 'sort_bed'),
     }
     config['software']['data'] = {
         "PLASMID_REF": os.path.join(plasmid_ref, 'plasm_seq.fa'),

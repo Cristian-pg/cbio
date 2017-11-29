@@ -33,6 +33,7 @@ class BioTask():
         self.RTGPATH = self.config['softdata']['software']['paths']['RTGPATH']
         self.VCFALLELICPRIM = self.config['softdata']['software']['paths']['VCFALLELICPRIM']
         self.VT = self.config['softdata']['software']['paths']['VT']
+        self.SORTBED = self.config['softdata']['software']['paths']['SORTBED']
 
         # Other
         self.REFERENCE_GENOME = self.config['softdata']['ref'][self.build]
@@ -55,7 +56,7 @@ class BioTask():
     def run(self):
         import time
         start = time.time()
-        self.loggerApi.iniciar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'])
+        # self.loggerApi.iniciar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'])
 
         # Ejecutar la herramienta
         self.run_process()
@@ -64,7 +65,7 @@ class BioTask():
         end = time.time()
         time = str(round(end - start, 2))
         self.log.debug(f'_time_ - {type(self).__name__} - {time} s')
-        self.loggerApi.finalizar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'])
+        # self.loggerApi.finalizar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'])
         # self.loggerApi.informar(f"{type(self).__name__} result")
 
     def check_config(self):
