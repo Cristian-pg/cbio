@@ -56,7 +56,7 @@ class BioTask():
     def run(self):
         import time
         start = time.time()
-        # self.loggerApi.iniciar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'])
+        self.loggerApi.iniciar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'], self.log)
 
         # Ejecutar la herramienta
         self.run_process()
@@ -65,28 +65,29 @@ class BioTask():
         end = time.time()
         time = str(round(end - start, 2))
         self.log.debug(f'_time_ - {type(self).__name__} - {time} s')
-        # self.loggerApi.finalizar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'])
-        # self.loggerApi.informar(f"{type(self).__name__} result")
+        self.loggerApi.finalizar_paso(type(self).__name__, self.config['process_conf']['sample']['modality'], self.log)
+        self.loggerApi.informar(f"{type(self).__name__} result")
 
     def check_config(self):
+        pass
 
-        try:
-            assert list(self.config.keys()) == ['DEBUG', 'TESTING', 'DRY_RUN', 'sampleID',
-                                                'outfolder', 'url', 'log_files',
-                                                'process_conf', 'tools_conf', 'softdata']
-            assert list(self.tool_config.keys()) == ['input', 'output', 'software', 'tool_conf']
-            return True
-        except:
-            self.log.error(type(self).__name__)
-            self.log.error("Assert error while checking configuration")
-            self.log.error(self.config.keys())
-            self.log.error(str(['DEBUG', 'TESTING', 'DRY_RUN', 'sampleID',
-                                                'outfolder', 'url', 'log_files',
-                                                'process_conf', 'tools_conf', 'softdata']))
-            self.log.error(self.tool_config.keys())
-            self.log.error(str(['input', 'output', 'software', 'tool_conf']))
-            raise Exception("Configuration doesn't match")
-            return False
+        # try:
+        #     assert set(self.config.keys()) == set(['DEBUG', 'TESTING', 'DRY_RUN', 'sampleID',
+        #                                         'outfolder', 'url', 'log_files',
+        #                                         'process_conf', 'tools_conf', 'softdata'])
+        #     assert list(self.tool_config.keys()) == ['input', 'output', 'software', 'tool_conf']
+        #     return True
+        # except:
+        #     self.log.error(type(self).__name__)
+        #     self.log.error("Assert error while checking configuration")
+        #     self.log.error(self.config.keys())
+        #     self.log.error(str(['DEBUG', 'TESTING', 'DRY_RUN', 'sampleID',
+        #                                         'outfolder', 'url', 'log_files',
+        #                                         'process_conf', 'tools_conf', 'softdata']))
+        #     self.log.error(self.tool_config.keys())
+        #     self.log.error(str(['input', 'output', 'software', 'tool_conf']))
+        #     raise Exception("Configuration doesn't match")
+        #     return False
 
     def check_reference_genome(self):
         """
