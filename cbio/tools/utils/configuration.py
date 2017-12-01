@@ -71,6 +71,7 @@ def get_config():
         "VCFALLELICPRIM": os.path.join(ngs_software_bin, 'vcfallelicprimitives'),
         "VT": os.path.join(ngs_software_bin, 'vt'),
         "SORTBED": os.path.join(ngs_software_bin, 'sort_bed'),
+        "GEMINIPATH": os.path.join(ngs_software_bin, 'gemini'),
     }
     config['software']['data'] = {
         "PLASMID_REF": os.path.join(plasmid_ref, 'plasm_seq.fa'),

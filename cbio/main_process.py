@@ -34,6 +34,7 @@ class BioTask():
         self.VCFALLELICPRIM = self.config['softdata']['software']['paths']['VCFALLELICPRIM']
         self.VT = self.config['softdata']['software']['paths']['VT']
         self.SORTBED = self.config['softdata']['software']['paths']['SORTBED']
+        self.GEMINIPATH = self.config['softdata']['software']['paths']['GEMINIPATH']
 
         # Other
         self.REFERENCE_GENOME = self.config['softdata']['ref'][self.build]
@@ -141,7 +142,7 @@ class BioTask():
                 os.system(cmd)
 
             elif mode == 3:
-                f = open("/home/cpg/full.bwa.log", "w+")
+                f = open("/tmp/full.bwa.log", "w+")
                 # Using pipe in command could block the stdout, see this post:
                 # https://thraxil.org/users/anders/posts/2008/03/13/Subprocess-Hanging-PIPE-is-your-enemy/
                 # https://www.reddit.com/r/Python/comments/1vbie0/subprocesspipe_will_hang_indefinitely_if_stdout/
