@@ -15,12 +15,16 @@ def get_init_paths():
     refgenomes = os.getenv('REFGENOMES')
     output_dir = os.getenv('OUTPUT_DIR')
     plasmid_ref = os.getenv('PLASMID_REF')
+    vep_cache = os.getenv('VEPCACHE')
+    biodata = os.getenv('BIODATA')
 
     init_conf = {
         'BIN_BIOTOOLS': ngs_software_bin,
         'REFGENOMES': refgenomes,
         'OUTPUT_DIR': output_dir,
         'PLASMID_REF': plasmid_ref,
+        'VEPCACHE': vep_cache,
+        'BIODATA': biodata,
         }
 
     if any(a is None for a in [ngs_software_bin, refgenomes, output_dir, plasmid_ref]):
@@ -42,6 +46,8 @@ def get_config():
     ngs_software_bin = init_conf['BIN_BIOTOOLS']
     plasmid_ref = init_conf['PLASMID_REF']
     output_dir = init_conf['OUTPUT_DIR']
+    vep_cache = init_conf['VEPCACHE']
+    biodata = init_conf['BIODATA']
 
     config = {}
 
@@ -72,6 +78,8 @@ def get_config():
         "VT": os.path.join(ngs_software_bin, 'vt'),
         "SORTBED": os.path.join(ngs_software_bin, 'sort_bed'),
         "GEMINIPATH": os.path.join(ngs_software_bin, 'gemini'),
+        "VEPPATH": os.path.join(ngs_software_bin, 'vep'),
+        "VEPCACHE": vep_cache,
     }
     config['software']['data'] = {
         "PLASMID_REF": os.path.join(plasmid_ref, 'plasm_seq.fa'),
@@ -81,7 +89,8 @@ def get_config():
 
     config['dbs'] = {
         "ANNOVARINFO": os.path.join(ngs_software_bin, 'annov_humandb'),
-        "IMEGENDB": os.path.join(ngs_software_bin, 'test.db')
+        "IMEGENDB": os.path.join(ngs_software_bin, 'test.db'),
+        "VEPDB": os.path.join('/DATA/biodata/vep/'),
     }
 
     config['outdir'] = output_dir

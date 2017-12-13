@@ -35,11 +35,14 @@ class BioTask():
         self.VT = self.config['softdata']['software']['paths']['VT']
         self.SORTBED = self.config['softdata']['software']['paths']['SORTBED']
         self.GEMINIPATH = self.config['softdata']['software']['paths']['GEMINIPATH']
+        self.VEPPATH = self.config['softdata']['software']['paths']['VEPPATH']
 
         # Other
         self.REFERENCE_GENOME = self.config['softdata']['ref'][self.build]
         self.HUMANDB = self.config['softdata']['dbs']['ANNOVARINFO']
         self.NEXTERAPE = os.path.join("/DATA/biodata/NexteraPE-PE.fa")
+        self.VEPCACHE = self.config['softdata']['software']['paths']['VEPCACHE']
+        self.VEPDB = self.config['softdata']['dbs']['VEPDB']
 
 
         return None
