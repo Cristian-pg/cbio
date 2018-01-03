@@ -20,14 +20,15 @@ with open('cbio/__init__.py', 'rb') as f:
     version = str(ast.literal_eval(_version_re.search(
         f.read().decode('utf-8')).group(1)))
 
-setup(name='cbio',
+setup(
+    name='cbio',
     version=version,
     description='Package with bioinformatical utilities',
     url='https://github.com/Cristian-pg/cbio',
     author='Cristian Perez',
     author_email='Vilero89@gmail.com',
     license='GNU General Public License v3.0',
-    packages=find_packages(),
+    packages=['cbio', 'cbio.biofiles'],
     zip_safe=False,
     python_requires='>=3',
     package_data={'': ['*.css', '*.sh', '*.html']},
@@ -45,7 +46,8 @@ setup(name='cbio',
         'pandas',
         'matplotlib',
         'seaborn',
-        'tailer'
+        'tailer',
+        'biomart',
+        'coloredlogs'
     ],
-    scripts=['cbio/cbio.py']
 )

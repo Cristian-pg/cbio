@@ -1,9 +1,25 @@
-class VCF():
-    def __init__(self, filepath, args):
-        self.filepath = filepath
-        self.args = args
+import tailer as tl
 
-    def head(self):
+
+class VCF():
+    def __init__(self, filepath):
+        self.filepath = filepath
+
+        self.get_header()
+
+    def get_header(self):
+
+        self.header = ""
+
+        for line in open(self.filepath, 'r'):
+            if line.startswith('#CHROM'):
+                self.header = line.strip('\n').split('\n')
+
+        if self.header == "":
+            self.header = ['CHROM', 'POS', 'ID', 'REF', 'ALT', 'QUAL', 'FILTER', 'INFO', 'FORMAT', 'SAMPLE']
+
+
+    def head(self, lines, pretty=False):
         print('==> HEAD OF VCF FILE <==')
         c = 0
         fhand = open(self.filepath, 'r')
@@ -16,25 +32,25 @@ class VCF():
 
             line = line.strip('\n').split('\t')
 
-            if self.args.pretty:
+            if pretty:
                 line[7] = line[7][0:4] + '[...]' + line[7][-7:]
             print('\t'.join(line))
             c += 1
 
-            if c == 5:
+            if c == lines:
                 print()
                 fhand.close()
                 break
 
         return ()
 
-    def tail(self):
+    def tail(self, lines, pretty=False):
         c = 0
         print('==> TAIL OF VCF FILE <==')
-        print('#' + "\t".join(['CHROM', 'POS', 'ID', 'REF', 'ALT', 'QUAL', 'FILTER', 'INFO', 'FORMAT', 'SAMPLE']))
+        print('#' + "\t".join(self.header))
 
         fhand = open(self.filepath)
-        lastLines = tl.tail(fhand, 5)
+        lastLines = tl.tail(fhand, lines)
         fhand.close()
 
         for line in lastLines:
@@ -46,12 +62,12 @@ class VCF():
 
             line = line.strip('\n').split('\t')
 
-            if self.args.pretty:
+            if pretty:
                 line[7] = line[7][0:4] + '[...]' + line[7][-7:]
             print('\t'.join(line))
             c += 1
 
-            if c == 5:
+            if c == lines:
                 print()
                 break
 
