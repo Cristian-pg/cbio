@@ -1,1 +1,2 @@
-from . import vcf
+__all__ = ['bed']
+from biofiles import *
